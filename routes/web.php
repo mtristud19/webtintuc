@@ -63,11 +63,8 @@ route::prefix('admin')->group(function () {
 //     }
 // });
 
-route::get('/', [CategoryController::class, 'trangchu']);
+route::get('/', [PagesController::class, 'trangchu']);
+route::get('/loaitin/{idloaitin}', [PagesController::class, 'pageloaitin']);
+route::get('/tintuc/{id}', [PagesController::class, 'chitiettintuc']);
 
 
-route::prefix('clientsloaitin')->group(function () {
-    route::get('/', [LoaitinController::class, 'pageloaitin']);
-
-
-});

@@ -12,7 +12,7 @@
 
                     <ul class="dropdown-menu" role="menu">
                         @foreach($item->loaitin as $lt)
-                        <li><a href="#">{{$lt->tenloaitin}}</a></li>
+                        <li><a href="/loaitin/{{$lt->idloaitin}}">{{$lt->tenloaitin}}</a></li>
                         @endforeach
                     </ul>
 
@@ -26,3 +26,4 @@
             </ul>
         </div>
     </nav>
+    </section>

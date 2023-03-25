@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Loaitin;
+use App\Models\Tintuc;
 use Illuminate\Http\Request;
 
 class LoaitinController extends Controller
@@ -53,7 +54,7 @@ class LoaitinController extends Controller
     public function edit($id)
     {
         $data = Loaitin::findOrFail($id);
-        return view('admin.loaitin.editlt',['loaitin'=>$data]);
+        return view('admin.loaitin.editlt',['loaitin'=>$data,'theloai'=>Category::all()]);
     }
     public function update(Request $r)
     {
@@ -75,9 +76,5 @@ class LoaitinController extends Controller
         return redirect('/admin/loaitin');
     }
     // nguoi dung
-    public function pageloaitin()
-    {
-        return view('clients.pages.loaitin',['theloai'=>Category::all()]);
-      
-    }
+
 }

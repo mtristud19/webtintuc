@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tintuc;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 class TintucController extends Controller
 {
@@ -14,7 +15,7 @@ class TintucController extends Controller
     }
     public function create()
     {
-        return view('admin.tintuc.creatett');
+        return view('admin.tintuc.creatett',['theloai'=>Category::all()]);
     }
     public function store(Request $r)
     {
@@ -44,7 +45,7 @@ class TintucController extends Controller
     public function edit($id)
     {
         $data = Tintuc::findOrFail($id);
-        return View('admin.tintuc.edittt', ['data' => $data]);
+        return View('admin.tintuc.edittt', ['data' => $data,'theloai'=>Category::all()]);
     }
     
     public function update(Request $request)

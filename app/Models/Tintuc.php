@@ -10,7 +10,7 @@ class Tintuc extends Model
     use HasFactory;
     protected $table ='tintuc';
     protected $primaryKey ='idtintuc';
-    protected $keyType ='string';
+    // protected $keyType ='string';
     // public $incrementing = false;
     public $timestamps = false;
 

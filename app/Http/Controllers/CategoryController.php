@@ -51,7 +51,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $data = Category::findOrFail($id);
-        return view('admin.category.editcat',['data'=>$data]);
+        return view('admin.category.editcat',['data'=>$data,'theloai'=>Category::all()]);
     }
     public function update(Request $r)
     {
@@ -72,8 +72,5 @@ class CategoryController extends Controller
         return redirect('/admin/category');
     }
     // Nguoi dung
-    public function trangchu()
-    {
-        return view('clients.pages.index',['theloai'=>Category::all()]);
-    }
+
 }

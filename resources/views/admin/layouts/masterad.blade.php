@@ -29,7 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="/asset/backend/css/style.css" rel="stylesheet">
-    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+   
 </head>
 
 <body>

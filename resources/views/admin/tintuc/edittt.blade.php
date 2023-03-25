@@ -40,9 +40,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Mô tả</label>
                             <div class="col-sm-10">
                                 <textarea cols="30" rows="10" class="form-control" id="inputPassword3" name="mota">{{$data->mota}}</textarea>
-                                <script>
-                                    CKEDITOR.replace('mota');
-                                </script>
+                            
                                 @error('mota')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
@@ -52,9 +50,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Nội dung</label>
                             <div class="col-sm-10">
                                 <textarea cols="30" rows="10" class="form-control" id="inputPassword3" name="noidung">{{$data->noidung}}</textarea>
-                                <script>
-                                    CKEDITOR.replace('noidung');
-                                </script>
+                               
                                 @error('noidung')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
@@ -94,7 +90,7 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Lượt xem</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" value="0" step="1" class="form-control" id="inputPassword3" name="luotxem" value="{{$data->luotxem}}">
+                                <input type="number" min="0" step="1" class="form-control" id="inputPassword3" name="luotxem" value="{{$data->luotxem}}">
                                 @error('luotxem')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror

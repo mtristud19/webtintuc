@@ -40,9 +40,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Mô tả</label>
                             <div class="col-sm-10">
                                 <textarea cols="30" rows="10" class="form-control" id="inputPassword3" name="mota"></textarea>
-                                <script>
-                                    CKEDITOR.replace('mota');
-                                </script>
+                              
                                 @error('mota')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
@@ -52,9 +50,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Nội dung</label>
                             <div class="col-sm-10">
                                 <textarea cols="30" rows="10" class="form-control" id="inputPassword3" name="noidung"></textarea>
-                                <script>
-                                    CKEDITOR.replace('noidung');
-                                </script>
+                             
                                 @error('noidung')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
