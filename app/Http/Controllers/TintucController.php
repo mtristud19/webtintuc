@@ -11,7 +11,7 @@ class TintucController extends Controller
     //
     public function index()
     {
-        return view('admin.tintuc.index',['tintuc'=>Tintuc::orderBy('idtintuc','ASC')->paginate(6)]);
+        return view('admin.tintuc.index',['tintuc'=>Tintuc::orderBy('idtintuc','DESC')->paginate(6)]);
     }
     public function create()
     {
@@ -19,7 +19,30 @@ class TintucController extends Controller
     }
     public function store(Request $r)
     {
-      
+        $r->validate(
+            [
+                'idtintuc' => 'unique:tintuc',
+                'tieude' => 'min:10|max:100',
+                'img'=>'mimes:jpeg,jpg,png|max:10000',
+                'mota'=>'min:10',
+                'noidung'=>'min:10',
+                'ngaydang'=>'before:now',
+                
+
+
+            ],
+            [
+                'idtintuc.unique' => 'Mã đã tồn tại',
+                'tieude.min' => 'Tiêu đề tối thiểu 10 ký tự',
+                'tieude.max' => 'Tiêu đề tối đa 100 ký tự',
+                'img.mimes'=>'Hình không đúng định dạng',
+                'img.max'=>'Dung lượng hình ảnh quá lớn',
+                'mota.min'=>'Mô tả tối thiểu 10 ký tự',
+                'noidung.min'=>'Nội dung tối thiểu 10 ký tự',
+                'ngaydang.before'=>'Không được chọn ngày tương lai'
+            ]
+        );
+     
         $data = $r->all();
         ///response()->json($r->all());
         $img = $data['idtintuc'] . '-' . $r->img->getClientOriginalName();

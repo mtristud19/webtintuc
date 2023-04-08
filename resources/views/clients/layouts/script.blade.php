@@ -6,3 +6,4 @@
     <script src="/asset/frontend/js/jquery.newsTicker.min.js"></script>
     <script src="/asset/frontend/js/jquery.fancybox.pack.js"></script>
     <script src="/asset/frontend/js/custom.js"></script>
+   

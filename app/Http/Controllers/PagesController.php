@@ -14,23 +14,32 @@ class PagesController extends Controller
     {
         $loaitin=Loaitin::find($idloaitin);
         $tintuc=Tintuc::where('idloaitin',$idloaitin)->paginate(2);
-        return view('clients.pages.loaitin',['theloai'=>Category::all(),'tintuc'=>$tintuc,'loaitin'=>$loaitin]);
+        $tinnoibat=Tintuc::where('hot',1)->take(5)->get();
+        return view('clients.pages.loaitin',['theloai'=>Category::all(),'tintuc'=>$tintuc,'loaitin'=>$loaitin,'tinnoibat'=>$tinnoibat]);
       
     }
     public function trangchu()
     {
-        return view('clients.pages.index',['theloai'=>Category::all()]);
+        $tinnoibat=Tintuc::where('hot',1)->take(5)->get();
+        return view('clients.pages.index',['theloai'=>Category::all(),'tinnoibat'=>$tinnoibat]);
     }
     public function chitiettintuc($id)
     {
         
      
         $tintuc=Tintuc::findOrFail($id);
-      
+        $tinnoibat=Tintuc::where('hot',1)->take(5)->get();
         DB::table('tintuc')->where('idtintuc', $id)->update(['luotxem' => $tintuc->luotxem+1]); 
         
   
-        return view('clients.pages.tintuc',['theloai'=>Category::all(),'tintuc'=>$tintuc]);
+        return view('clients.pages.tintuc',['theloai'=>Category::all(),'tintuc'=>$tintuc,'tinnoibat'=>$tinnoibat]);
+    }
+    public function find(Request $r)
+    {
+        $kw = $r->keyword;
+        $tintuc = Tintuc::whereFullText('mota',"%$kw%")->orwhereFullText('noidung',"%$kw%")->orwhereFullText('tieude',"%$kw%")->paginate(5);
+        return view('clients.pages.timkiem', ['tintuc' => $tintuc,'theloai'=>Category::all(),'tukhoa'=>$kw]);
+        //return view('home.book3');
     }
   
 

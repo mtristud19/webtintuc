@@ -31,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
         
         Paginator::useBootstrap();
         view::share('loaitin2', DB::table('loaitin')->get());
+        view::share('nguoidung2', DB::table('users')->get());
     }
 }

@@ -21,7 +21,7 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Tiêu đề</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputPassword3" name="tieude">
+                                <input type="text" class="form-control" id="inputPassword3" name="tieude" required>
                                 @error('tieude')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
@@ -89,7 +89,7 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Lượt xem</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" value="0" step="1" class="form-control" id="inputPassword3" name="luotxem">
+                                <input type="number" min="0" value="0" step="1" class="form-control" id="inputPassword3" name="luotxem" readonly>
                                 @error('luotxem')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
@@ -99,7 +99,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">HOT</label>
                             <div class="col-sm-10">
                                 <input type="radio" value="1" name="hot"> Có
-                                <input type="radio" value="0" name="hot"> Không
+                                <input type="radio" value="0" name="hot" checked> Không
                                 @error('hot')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror

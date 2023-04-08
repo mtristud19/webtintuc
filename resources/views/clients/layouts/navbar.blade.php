@@ -5,7 +5,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav main_nav">
-                <li class="active"><a href="index.html"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
+                <li class="active"><a href="/"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
                 @foreach($theloai as $item)
                 @if(count($item->loaitin)>0)
                 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{$item->tennhomtin}}</a>
@@ -21,8 +21,7 @@
                 @endforeach
 
 
-                <li><a href="pages/contact.html">Contact Us</a></li>
-                <li><a href="pages/404.html">404 Page</a></li>
+    
             </ul>
         </div>
     </nav>

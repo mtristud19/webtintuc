@@ -20,36 +20,41 @@
               
            
             </div>
-            <div class="social_link">
-              <ul class="sociallink_nav">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-              </ul>
-            </div>
-            <div class="related_post">
-              <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
-              <ul class="spost_nav wow fadeInDown animated">
-                <li>
-                  <div class="media"> <a class="media-left" href="single_page.html"> <img src="../images/post_img1.jpg" alt=""> </a>
-                    <div class="media-body"> <a class="catg_title" href="single_page.html"> Aliquam malesuada diam eget turpis varius</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media"> <a class="media-left" href="single_page.html"> <img src="../images/post_img2.jpg" alt=""> </a>
-                    <div class="media-body"> <a class="catg_title" href="single_page.html"> Aliquam malesuada diam eget turpis varius</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media"> <a class="media-left" href="single_page.html"> <img src="../images/post_img1.jpg" alt=""> </a>
-                    <div class="media-body"> <a class="catg_title" href="single_page.html"> Aliquam malesuada diam eget turpis varius</a> </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
+        
+          
           </div>
+
+          <div >
+              <h4>Viết bình luận ...<span class="glyphicon-pencil"></span></h4>
+              <form role="form" action="/{{$tintuc->idtintuc}}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <textarea class="form-control" name="noidung" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Gửi</button>
+                
+              </form>
+          </div>
+          @foreach($tintuc->comment as $cm)
+          
+          <div >
+              <a class="pull-left" href="#">
+                <img class="media-object" src="http://placehold.it/40x40" alt="">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">{{$cm->user->ten}}
+                  <small>{{$cm->ngaydang}}</small>
+                </h4>
+                {{$cm->noidung}}
+
+              </div>
+          </div>
+          
+          @endforeach
+
+
+  
         </div>
       </div>
         <div>

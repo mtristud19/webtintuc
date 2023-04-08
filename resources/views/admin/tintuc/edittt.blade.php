@@ -13,7 +13,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">ID tin tức </label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="inputPassword3" name="idtintuc" value="{{$data->idtintuc}}" readonly>
-                           
+
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -29,7 +29,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Hình ảnh</label>
                             <div class="col-sm-10">
                                 <input type="file" class="form-control" id="inputPassword3" name="img">
-                                <img src="{{asset('storage/public_img/'.$data->img)}}" style="width: 100px;" >
+                                <img src="{{asset('storage/public_img/'.$data->img)}}" style="width: 100px;">
 
                                 @error('img')
                                 <p class="alert alert-danger">{{$message}}</p>
@@ -40,7 +40,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Mô tả</label>
                             <div class="col-sm-10">
                                 <textarea cols="30" rows="10" class="form-control" id="inputPassword3" name="mota">{{$data->mota}}</textarea>
-                            
+
                                 @error('mota')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
@@ -50,7 +50,7 @@
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Nội dung</label>
                             <div class="col-sm-10">
                                 <textarea cols="30" rows="10" class="form-control" id="inputPassword3" name="noidung">{{$data->noidung}}</textarea>
-                               
+
                                 @error('noidung')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
@@ -68,13 +68,13 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Nhóm tin</label>
                             <div class="col-sm-10">
-                                <select  class="form-control" id="Nhomtin" name="idnhomtin">
+                                <select class="form-control" id="Nhomtin" name="idnhomtin">
                                     @foreach($theloai as $item)
-                                    <option 
-                                    @if($data->loaitin->nhomtin->idnhomtin==$item->idnhomtin)
-                                    {{"selected"}}
-                                    @endif
-                                    value="{{$item->idnhomtin}}">{{$item->tennhomtin}}</option>
+                                    <option @if($data->loaitin->nhomtin->idnhomtin==$item->idnhomtin)
+                                        {{"selected"}}
+                                        @endif
+                                        value="{{$item->idnhomtin}}">{{$item->tennhomtin}}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -82,8 +82,8 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Loại tin</label>
                             <div class="col-sm-10">
-                                <select  class="form-control" id="Loaitin" name="idloaitin" >
-                               
+                                <select class="form-control" id="Loaitin" name="idloaitin">
+
                                 </select>
                             </div>
                         </div>
@@ -98,14 +98,12 @@
                         </div>
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">HOT</label>
-                             <div class="col-sm-10">
-                                <input type="radio" value="1" name="hot" 
-                                @if($data->hot==1)
+                            <div class="col-sm-10">
+                                <input type="radio" value="1" name="hot" @if($data->hot==1)
                                 {{"checked"}}
                                 @endif
                                 > Có
-                                <input type="radio" value="0" name="hot"
-                                @if($data->hot==0)
+                                <input type="radio" value="0" name="hot" @if($data->hot==0)
                                 {{"checked"}}
                                 @endif
                                 > Không
@@ -123,24 +121,75 @@
 
             </div>
         </div>
+        <div class="row g-4">
+            <div class="col-md-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Quản lý Comment</h6>
+
+                    @if(session()->has('mess'))
+                    <p class="alert alert-primary sm-4">
+                        {{session('mess')}}
+                    </p>
+                    @endif
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Nội dung</th>
+                                <th scope="col">Ngày đăng</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        @foreach($data->comment as $cm)
+                        <tbody>
+                            <tr>
+                                <td>{{$cm->idbinhluan}}</td>
+
+                                <td>{{$cm->user->ten}}</td>
+                                <td>{{$cm->noidung}}</td>
+                                <td>{{$cm->ngaydang}}</td>
+                                <th>
+                                    <form action="/admin/comment/destroy/{{$cm->idbinhluan}}/{{$data->idtintuc}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="delete">
+                                        <input type="submit" value="xóa" class="btn btn-danger">
+                                    </form>
+                                </th>
+                             
+                                </td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+
+
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
     </div>
+
 </div>
+
 @stop
 @section('script')
 <script>
-   $(document).ready(function(){
+    $(document).ready(function() {
         var idNhomTin = $('#Nhomtin').val();
-            $.get("/admin/ajax/loaitin/"+idNhomTin, function(data){
-                $("#Loaitin").html(data);
-            });
-        $("#Nhomtin").change(function(){
+        $.get("/admin/ajax/loaitin/" + idNhomTin, function(data) {
+            $("#Loaitin").html(data);
+        });
+        $("#Nhomtin").change(function() {
             var idNhomTin = $(this).val();
-            $.get("/admin/ajax/loaitin/"+idNhomTin, function(data){
+            $.get("/admin/ajax/loaitin/" + idNhomTin, function(data) {
                 $("#Loaitin").html(data);
             });
         });
-       
+
     });
-  
 </script>
 @stop

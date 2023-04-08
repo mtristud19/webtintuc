@@ -1,5 +1,8 @@
 <?php
 
+
+use App\Models\Users;
+
 return [
 
     /*
@@ -16,6 +19,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+
     ],
 
     /*
@@ -40,6 +44,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+     
     ],
 
     /*
@@ -62,8 +67,10 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => Users::class,
+            
         ],
+    
 
         // 'users' => [
         //     'driver' => 'database',

@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/asset/frontend/css/theme.css">
     <link rel="stylesheet" type="text/css" href="/asset/frontend/css/style.css">
    
+   
     <!--[if lt IE 9]>
 <script src="assets/js/html5shiv.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
@@ -49,6 +50,7 @@
     </div>
     <!--Script Start -->
     @include("clients.layouts.script")
+    @yield('script');
     <!--Script End -->
 </body>
 
