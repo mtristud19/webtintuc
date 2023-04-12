@@ -9,15 +9,7 @@
                     <form action="/admin/tintuc/store" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="inputPassword3" class="col-sm-2 col-form-label">ID tin tức </label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputPassword3" name="idtintuc">
-                                @error('idtintuc')
-                                <p class="alert alert-danger">{{$message}}</p>
-                                @enderror
-                            </div>
-                        </div>
+                        
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Tiêu đề</label>
                             <div class="col-sm-10">

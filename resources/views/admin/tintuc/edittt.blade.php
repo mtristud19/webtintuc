@@ -90,7 +90,7 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Lượt xem</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" step="1" class="form-control" id="inputPassword3" name="luotxem" value="{{$data->luotxem}}">
+                                <input type="number" min="0" step="1" class="form-control" id="inputPassword3" name="luotxem" readonly value="{{$data->luotxem}}">
                                 @error('luotxem')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror

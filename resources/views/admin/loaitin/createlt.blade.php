@@ -12,7 +12,7 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">ID loại tin</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputPassword3" name="idloaitin">
+                                <input type="text" class="form-control" id="inputPassword3" required name="idloaitin">
                                 @error('idloaitin')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
@@ -21,7 +21,7 @@
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Tên loại tin</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputPassword3" name="tenloaitin">
+                                <input type="text" class="form-control" id="inputPassword3" required name="tenloaitin">
                                 @error('tenloaitin')
                                 <p class="alert alert-danger">{{$message}}</p>
                                 @enderror
